@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Data anlegen</title>
+ {{ bootstrap.load_css() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/css/bootstrap-tagsinput.css') }}">
+{% endblock %}
+
+{% block content %}
+<form action="{{ url_for('add_domtag') }}" method="POST" autocomplete="off">
+    <div class="thor">
+        <div>
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+            {{ form.domain(class_='beats1') }}
+        </div>
+
+        <div>
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+            {{ form.tag }}
+        </div>
+        <button class="trasmetti" type="submit">Senden</button>
+    </div>
+</form>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='css/js/bootstrap-tagsinput.js') }}"></script>
+<script>
+
+</script>
+{% endblock %}

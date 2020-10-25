@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Alle Domain</title>
+ {{ bootstrap.load_css() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div id="page-container">
+        <table class="volo">
+            <tr>
+                <th class="ring">ID</th>
+                <th class="ring">Name</th>
+                <th colspan="100%" class="ring">Tag</th>
+            </tr>
+            {% for domain in Mydomains %}
+                <tr>
+                    <td class="bell">
+                        {{ domain.id }}
+                    </td>
+                    <td class="bell">
+                        {{ domain.name }}
+                    </td>
+                    {% for tag in Mytags %}
+                    <td class="bell">           <!-- Not sure if that is the right syntax for querying the association table -->
+                        {{ tag.domain_id }}
+                        {% if not loop.last %}
+                        {{','}}
+                        {% endif %}
+                    </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

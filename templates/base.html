@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block head %}
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        {% block styles %}
+            <!-- Bootstrap CSS -->
+            {{ bootstrap.load_css() }}
+        {% endblock %}
+
+        <title>Page title</title>
+        {% endblock %}
+    </head>
+    <body>
+        <!-- Page content -->
+        {% block navbar %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:5000/show">Liste alle Domain<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="http://127.0.0.1:5000/show/<id>" data-target="#exampleModalCenter" data-toggle="modal">Einzel Domain</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:5000/anlegen">Data anlegen</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        {% endblock %}
+
+        {% block one %}
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Wählen Sie die Domain</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" style="text-align: center;">
+                  <form id = "suche_form" onsubmit="suche_function()">
+                      <h5>Domain ID eingeben: </h5><input type="text" name="inputid" placeholder="1..2.." id="inputid" style="magin: 3px;">
+              </div>
+              <div class="modal-footer">
+                      <input type="submit" name="Suche" class="btn btn-primary" value="Suchen"></input>
+                  </form>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Schließen</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+        {% block scripts %}
+            {{ bootstrap.load_js() }}
+         <script>
+            function suche_function(){
+                var action_src = "{{ url_for('show_einzeln', ids=inputid) }}" + document.getElementsByName("inputid")[0].value;
+                var suche_form = document.getElementById('suche_form');
+                suche_form.action = action_src;
+            }
+         </script>
+        {% endblock %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <footer id="footer">  &copy; Copyright 2020 by <a href="https://amicaldo.de/" target="_blank" style="color:#008B8B;"> AXB </a></footer>
+</body>
+
+</html>
