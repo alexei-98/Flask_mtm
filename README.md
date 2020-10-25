@@ -1,6 +1,6 @@
 # Flask_mtm
-# main goal: Display the Data from the MySQL Database "amicaldopj" in the HTML/Jinja Template through Flask and SQLAlchemy
-# changes: Line 16-20 --> Change the database name, user, password and host. Database should be created before starting the application because the app doesn't create one
+# Main goal: Display the Data from the MySQL Database "amicaldopj" in the HTML/Jinja Template through Flask and SQLAlchemy
+# Changes TO DO: Line 16-20 --> Change the database name, user, password and host. Database should be created before starting the application because the app doesn't create one
 # problems:
 #  Line 70 --> Querying the 'Tags' table 
 #  Line 90-95 --> The Tags Objects are splitted and inserted as single elements but the 'append' function generates the error "AttributeError: 'str' object has no attribute 'tags'"
